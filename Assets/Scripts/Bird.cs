@@ -17,8 +17,9 @@ public class Bird : MonoBehaviour
     public AudioClip select;
     public AudioClip fly;
 
+    protected Rigidbody2D _rb;
+
     private SpringJoint2D _sp;
-    private Rigidbody2D _rb;
     private int _status;
     private TestMyTrail _testMyTrail;
     private bool _canMove = true;
@@ -35,16 +36,15 @@ public class Bird : MonoBehaviour
 
     private void Update()
     {
-        float posX = transform.position.x;
+        if (_isFly && Input.GetMouseButtonDown(0)) Skill();
+
+        var posX = transform.position.x;
         Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position,
             new Vector3(Mathf.Clamp(posX, 6.35F, 16),
                 Camera.main.transform.position.y,
                 Camera.main.transform.position.z), cameraSmooth * Time.deltaTime);
 
-        if (_status < 2)
-        {
-            Line();
-        }
+        if (_status < 2) Line();
 
         if (!_isClick)
         {
@@ -72,16 +72,8 @@ public class Bird : MonoBehaviour
 
         if (Vector3.Distance(transform.position, rightPoint.position) > maxDistance)
         {
-            Vector3 pos = (transform.position - rightPoint.position).normalized * maxDistance;
+            var pos = (transform.position - rightPoint.position).normalized * maxDistance;
             transform.position = rightPoint.position + pos;
-        }
-
-        if (_isFly)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                ShowSkill();
-            }
         }
     }
 
@@ -150,6 +142,7 @@ public class Bird : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        _isFly = false;
         _testMyTrail.TrailEnd();
     }
 
@@ -168,7 +161,13 @@ public class Bird : MonoBehaviour
         AudioSource.PlayClipAtPoint(clip, transform.position);
     }
 
-    protected void ShowSkill()
+    private void Skill()
+    {
+        _isFly = false;
+        ShowSkill();
+    }
+
+    protected virtual void ShowSkill()
     {
     }
 }

@@ -10,7 +10,7 @@ public class TestMyTrail : MonoBehaviour
     private float tempT = 0;
     private float animationIncrement = 0.003f;
 
-    void LateUpdate()
+    private void LateUpdate()
     {
         t = Mathf.Clamp(Time.deltaTime, 0, 0.066f);
 
@@ -39,7 +39,7 @@ public class TestMyTrail : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Start()
     {
         // 默认没有拖尾效果
         myTrail.SetTime(0.0f, 0.0f, 1.0f);
