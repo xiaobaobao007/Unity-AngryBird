@@ -6,29 +6,39 @@ public class Bird : MonoBehaviour
     public float maxDistance = 1.3F;
     public float delayTime = 0.1F;
     public float cameraSmooth = 3;
-
-    public Transform leftPoint;
-    public LineRenderer left;
-    public Transform rightPoint;
-    public LineRenderer right;
     public AudioClip select;
     public AudioClip fly;
+    public Sprite hurt;
 
-    protected Rigidbody2D _rb;
+    protected Rigidbody2D Rb;
 
+    private Transform _leftPoint;
+    private LineRenderer _left;
+    private Transform _rightPoint;
+    private LineRenderer _right;
     private SpringJoint2D _sp;
     private int _status;
     private TestMyTrail _testMyTrail;
     private bool _canMove = true;
     private bool _isClick;
-    private bool _isFly = false;
-
+    private bool _isFly;
+    private SpriteRenderer _sr;
 
     private void Awake()
     {
+        var l = GameObject.Find("leftPosition");
+        _leftPoint = l.transform;
+        _left = l.GetComponent<LineRenderer>();
+
+        var r = GameObject.Find("rightPosition");
+        _rightPoint = r.transform;
+        _right = r.GetComponent<LineRenderer>();
+
         _sp = GetComponent<SpringJoint2D>();
-        _rb = GetComponent<Rigidbody2D>();
+
+        Rb = GetComponent<Rigidbody2D>();
         _testMyTrail = GetComponent<TestMyTrail>();
+        _sr = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -48,8 +58,8 @@ public class Bird : MonoBehaviour
             if (_status != 1) return;
 
             //禁用画线组件
-            right.enabled = false;
-            left.enabled = false;
+            _right.enabled = false;
+            _left.enabled = false;
 
             if (!IsStay()) return;
 
@@ -67,10 +77,10 @@ public class Bird : MonoBehaviour
         transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position -= new Vector3(0, 0, Camera.main.transform.position.z);
 
-        if (Vector3.Distance(transform.position, rightPoint.position) > maxDistance)
+        if (Vector3.Distance(transform.position, _rightPoint.position) > maxDistance)
         {
-            var pos = (transform.position - rightPoint.position).normalized * maxDistance;
-            transform.position = rightPoint.position + pos;
+            var pos = (transform.position - _rightPoint.position).normalized * maxDistance;
+            transform.position = _rightPoint.position + pos;
         }
     }
 
@@ -81,7 +91,7 @@ public class Bird : MonoBehaviour
         //点击开始
         _isClick = true;
 
-        _rb.isKinematic = true;
+        Rb.isKinematic = true;
     }
 
     private void OnMouseUp()
@@ -89,7 +99,7 @@ public class Bird : MonoBehaviour
         _canMove = false;
         //点击结束
         _isClick = false;
-        _rb.isKinematic = false;
+        Rb.isKinematic = false;
         //延迟执行
         Invoke("Fly", delayTime);
     }
@@ -108,15 +118,15 @@ public class Bird : MonoBehaviour
      */
     private void Line()
     {
-        right.enabled = true;
-        left.enabled = true;
+        _right.enabled = true;
+        _left.enabled = true;
         var position = transform.position;
 
-        right.SetPosition(0, rightPoint.position);
-        right.SetPosition(1, position);
+        _right.SetPosition(0, _rightPoint.position);
+        _right.SetPosition(1, position);
 
-        left.SetPosition(0, leftPoint.position);
-        left.SetPosition(1, position);
+        _left.SetPosition(0, _leftPoint.position);
+        _left.SetPosition(1, position);
     }
 
     public void setBirdIsWaitToFly_0()
@@ -145,7 +155,7 @@ public class Bird : MonoBehaviour
 
     public bool IsStay()
     {
-        return Math.Abs(_rb.velocity.magnitude) <= GameManager.StayMagnitude;
+        return Math.Abs(Rb.velocity.magnitude) <= GameManager.StayMagnitude;
     }
 
     public float GetXPoint()
@@ -166,5 +176,10 @@ public class Bird : MonoBehaviour
 
     protected virtual void ShowSkill()
     {
+    }
+
+    public void Hurt()
+    {
+        _sr.sprite = hurt;
     }
 }

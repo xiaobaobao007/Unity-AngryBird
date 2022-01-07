@@ -260,12 +260,9 @@ MonoBehaviour:
   maxDistance: 1.3
   delayTime: 0.1
   cameraSmooth: 3
-  leftPoint: {fileID: 0}
-  left: {fileID: 0}
-  rightPoint: {fileID: 0}
-  right: {fileID: 0}
-  select: {fileID: 0}
-  fly: {fileID: 0}
+  select: {fileID: 8300000, guid: 3641c9435ad52ea429348437c2742cdb, type: 3}
+  fly: {fileID: 8300000, guid: 65774e057815a5e4fa70215e9acad616, type: 3}
+  hurt: {fileID: 592090184148635579, guid: f8b2c23509649cb4cbb5067998dc48ad, type: 3}
 --- !u!114 &8701064540307719403
 MonoBehaviour:
   m_ObjectHideFlags: 0

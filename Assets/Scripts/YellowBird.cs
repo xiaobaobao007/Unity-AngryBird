@@ -2,7 +2,6 @@
 {
     protected override void ShowSkill()
     {
-        print(_rb.velocity);
-        _rb.velocity *= 2;
+        Rb.velocity *= 2;
     }
 }

@@ -35,6 +35,7 @@ public class Pig : MonoBehaviour
         if (other.gameObject.tag.Equals("Bird"))
         {
             AudioPlay(birdCollision);
+            other.transform.GetComponent<Bird>().Hurt();
         }
 
         if (other.relativeVelocity.magnitude > maxSpeed)
