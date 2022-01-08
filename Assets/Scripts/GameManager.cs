@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
         foreach (var bird in GameObject.FindGameObjectsWithTag("Bird"))
         {
             _birds.Add(bird.GetComponent<Bird>());
-            _birds.Sort((x, y) => x.GetXPoint() > y.GetXPoint() ? 0 : 1);
+            _birds.Sort((x, y) => x.CompareTo(y));
         }
 
         _pigs = new List<Pig>();

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class Bird : MonoBehaviour
+public class Bird : MonoBehaviour, IComparable<Bird>
 {
     public float maxDistance = 1.3F;
     public float delayTime = 0.1F;
@@ -158,11 +158,6 @@ public class Bird : MonoBehaviour
         return Math.Abs(Rb.velocity.magnitude) <= GameManager.StayMagnitude;
     }
 
-    public float GetXPoint()
-    {
-        return gameObject.transform.position.x;
-    }
-
     private void AudioPlay(AudioClip clip)
     {
         AudioSource.PlayClipAtPoint(clip, transform.position);
@@ -181,5 +176,19 @@ public class Bird : MonoBehaviour
     public void Hurt()
     {
         _sr.sprite = hurt;
+    }
+
+    public int CompareTo(Bird other)
+    {
+        if (GetXPoint() > other.GetXPoint())
+        {
+            return -1;
+        }
+        return 1;
+    }
+
+    private float GetXPoint()
+    {
+        return gameObject.transform.position.x;
     }
 }
