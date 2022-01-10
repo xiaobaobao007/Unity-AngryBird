@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -108,7 +109,11 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator Show()
     {
-        for (var i = 0; i < _birds.Count - _birdIndex + 1; i++)
+        var starNum = 4 - _birdIndex;
+        starNum = Math.Max(starNum, 3);
+        starNum = Math.Min(starNum, 0);
+
+        for (var i = 0; i < starNum; i++)
         {
             yield return new WaitForSeconds(0.2F);
             stars[i].SetActive(true);

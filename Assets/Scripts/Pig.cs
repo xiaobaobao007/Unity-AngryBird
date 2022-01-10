@@ -55,7 +55,7 @@ public class Pig : MonoBehaviour
         }
     }
 
-    private void Dead()
+    public void Dead()
     {
         AudioPlay(dead);
 

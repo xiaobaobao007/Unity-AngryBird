@@ -9,8 +9,11 @@ public class Bird : MonoBehaviour, IComparable<Bird>
     public AudioClip select;
     public AudioClip fly;
     public Sprite hurt;
+    public GameObject Boom;
 
     protected Rigidbody2D Rb;
+    protected SpriteRenderer Sr;
+    protected TestMyTrail MyTrail;
 
     private Transform _leftPoint;
     private LineRenderer _left;
@@ -18,11 +21,9 @@ public class Bird : MonoBehaviour, IComparable<Bird>
     private LineRenderer _right;
     private SpringJoint2D _sp;
     private int _status;
-    private TestMyTrail _testMyTrail;
     private bool _canMove = true;
     private bool _isClick;
     private bool _isFly;
-    private SpriteRenderer _sr;
 
     private void Awake()
     {
@@ -37,8 +38,8 @@ public class Bird : MonoBehaviour, IComparable<Bird>
         _sp = GetComponent<SpringJoint2D>();
 
         Rb = GetComponent<Rigidbody2D>();
-        _testMyTrail = GetComponent<TestMyTrail>();
-        _sr = GetComponent<SpriteRenderer>();
+        MyTrail = GetComponent<TestMyTrail>();
+        Sr = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -110,7 +111,7 @@ public class Bird : MonoBehaviour, IComparable<Bird>
         AudioPlay(fly);
         //脱离靶子
         _sp.enabled = false;
-        _testMyTrail.TrailStart();
+        MyTrail.TrailStart();
     }
 
     /**
@@ -133,16 +134,19 @@ public class Bird : MonoBehaviour, IComparable<Bird>
     {
         enabled = false;
         _sp.enabled = false;
+        Rb.bodyType = RigidbodyType2D.Static;
     }
 
     public void setBirdIsWaitToFly_1()
     {
         enabled = true;
         _sp.enabled = true;
+        Rb.bodyType = RigidbodyType2D.Dynamic;
     }
 
     private void Dead()
     {
+        Instantiate(Boom, transform.position, Quaternion.identity);
         Destroy(gameObject);
         GameManager.Instance.NextBird();
     }
@@ -150,7 +154,7 @@ public class Bird : MonoBehaviour, IComparable<Bird>
     private void OnCollisionEnter2D(Collision2D other)
     {
         _isFly = false;
-        _testMyTrail.TrailEnd();
+        MyTrail.TrailEnd();
     }
 
     public bool IsStay()
@@ -175,7 +179,7 @@ public class Bird : MonoBehaviour, IComparable<Bird>
 
     public void Hurt()
     {
-        _sr.sprite = hurt;
+        Sr.sprite = hurt;
     }
 
     public int CompareTo(Bird other)
@@ -184,6 +188,7 @@ public class Bird : MonoBehaviour, IComparable<Bird>
         {
             return -1;
         }
+
         return 1;
     }
 

@@ -1461,7 +1461,7 @@ GameObject:
   - component: {fileID: 420213108}
   m_Layer: 0
   m_Name: BLOCKS_1_97 (8)
-  m_TagString: Untagged
+  m_TagString: CanBeBoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1614,7 +1614,7 @@ GameObject:
   - component: {fileID: 421446290}
   m_Layer: 0
   m_Name: BLOCKS_1_97 (5)
-  m_TagString: Untagged
+  m_TagString: CanBeBoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2372,7 +2372,7 @@ GameObject:
   - component: {fileID: 581134180}
   m_Layer: 0
   m_Name: BLOCKS_1_89
-  m_TagString: Untagged
+  m_TagString: CanBeBoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2525,7 +2525,7 @@ GameObject:
   - component: {fileID: 597464984}
   m_Layer: 0
   m_Name: BLOCKS_1_97
-  m_TagString: Untagged
+  m_TagString: CanBeBoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2807,7 +2807,7 @@ GameObject:
   - component: {fileID: 645715048}
   m_Layer: 0
   m_Name: BLOCKS_1_10
-  m_TagString: Untagged
+  m_TagString: CanBeBoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3089,7 +3089,7 @@ GameObject:
   - component: {fileID: 690994626}
   m_Layer: 0
   m_Name: BLOCKS_1_4
-  m_TagString: Untagged
+  m_TagString: CanBeBoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3538,7 +3538,7 @@ GameObject:
   - component: {fileID: 780792457}
   m_Layer: 0
   m_Name: BLOCKS_1_89 (2)
-  m_TagString: Untagged
+  m_TagString: CanBeBoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3691,7 +3691,7 @@ GameObject:
   - component: {fileID: 781725514}
   m_Layer: 0
   m_Name: BLOCKS_1_100
-  m_TagString: Untagged
+  m_TagString: CanBeBoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3844,7 +3844,7 @@ GameObject:
   - component: {fileID: 804886427}
   m_Layer: 0
   m_Name: BLOCKS_1_97 (7)
-  m_TagString: Untagged
+  m_TagString: CanBeBoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4303,7 +4303,7 @@ GameObject:
   - component: {fileID: 869120051}
   m_Layer: 0
   m_Name: BLOCKS_1_90
-  m_TagString: Untagged
+  m_TagString: CanBeBoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4642,7 +4642,7 @@ GameObject:
   - component: {fileID: 986618040}
   m_Layer: 0
   m_Name: BLOCKS_1_90 (3)
-  m_TagString: Untagged
+  m_TagString: CanBeBoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5345,7 +5345,7 @@ GameObject:
   - component: {fileID: 1103962929}
   m_Layer: 0
   m_Name: BLOCKS_1_89 (4)
-  m_TagString: Untagged
+  m_TagString: CanBeBoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5793,7 +5793,7 @@ GameObject:
   - component: {fileID: 1252032687}
   m_Layer: 0
   m_Name: BLOCKS_1_97 (4)
-  m_TagString: Untagged
+  m_TagString: CanBeBoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6074,7 +6074,7 @@ GameObject:
   - component: {fileID: 1296783969}
   m_Layer: 0
   m_Name: BLOCKS_1_97 (6)
-  m_TagString: Untagged
+  m_TagString: CanBeBoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6227,7 +6227,7 @@ GameObject:
   - component: {fileID: 1335842434}
   m_Layer: 0
   m_Name: BLOCKS_1_89 (1)
-  m_TagString: Untagged
+  m_TagString: CanBeBoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6739,15 +6739,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5934248603494191425, guid: c6aa70743aff61d4c9fe6af893b2fe7a,
+        type: 3}
+      propertyPath: Boom
+      value: 
+      objectReference: {fileID: 1821928179465711185, guid: d76e549b72211ee4698c03fa7eb12f06,
+        type: 3}
     - target: {fileID: 8701064540307719392, guid: c6aa70743aff61d4c9fe6af893b2fe7a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.217
+      value: 0.326
       objectReference: {fileID: 0}
     - target: {fileID: 8701064540307719392, guid: c6aa70743aff61d4c9fe6af893b2fe7a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.358
+      value: -0.285
       objectReference: {fileID: 0}
     - target: {fileID: 8701064540307719392, guid: c6aa70743aff61d4c9fe6af893b2fe7a,
         type: 3}
@@ -7124,7 +7130,7 @@ GameObject:
   - component: {fileID: 1475885473}
   m_Layer: 0
   m_Name: BLOCKS_1_95
-  m_TagString: Untagged
+  m_TagString: CanBeBoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7289,7 +7295,7 @@ GameObject:
   - component: {fileID: 1548174988}
   m_Layer: 0
   m_Name: BLOCKS_1_12
-  m_TagString: Untagged
+  m_TagString: CanBeBoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7442,7 +7448,7 @@ GameObject:
   - component: {fileID: 1557267668}
   m_Layer: 0
   m_Name: BLOCKS_1_12 (1)
-  m_TagString: Untagged
+  m_TagString: CanBeBoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7595,7 +7601,7 @@ GameObject:
   - component: {fileID: 1563376865}
   m_Layer: 0
   m_Name: BLOCKS_1_92
-  m_TagString: Untagged
+  m_TagString: CanBeBoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7964,7 +7970,7 @@ GameObject:
   - component: {fileID: 1638657132}
   m_Layer: 0
   m_Name: BLOCKS_1_89 (3)
-  m_TagString: Untagged
+  m_TagString: CanBeBoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8276,7 +8282,7 @@ GameObject:
   - component: {fileID: 1692114992}
   m_Layer: 0
   m_Name: BLOCKS_1_5
-  m_TagString: Untagged
+  m_TagString: CanBeBoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8751,7 +8757,7 @@ GameObject:
   - component: {fileID: 1787649679}
   m_Layer: 0
   m_Name: BLOCKS_1_5 (1)
-  m_TagString: Untagged
+  m_TagString: CanBeBoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8904,7 +8910,7 @@ GameObject:
   - component: {fileID: 1811837904}
   m_Layer: 0
   m_Name: BLOCKS_1_97 (1)
-  m_TagString: Untagged
+  m_TagString: CanBeBoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10269,15 +10275,21 @@ PrefabInstance:
       propertyPath: fly
       value: 
       objectReference: {fileID: 8300000, guid: 65774e057815a5e4fa70215e9acad616, type: 3}
+    - target: {fileID: 115314324609605663, guid: dcef88cfaa6327e40b2765f6b8e46fff,
+        type: 3}
+      propertyPath: Boom
+      value: 
+      objectReference: {fileID: 1821928179465711185, guid: d76e549b72211ee4698c03fa7eb12f06,
+        type: 3}
     - target: {fileID: 8701064540307719392, guid: dcef88cfaa6327e40b2765f6b8e46fff,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.947
+      value: -2.963
       objectReference: {fileID: 0}
     - target: {fileID: 8701064540307719392, guid: dcef88cfaa6327e40b2765f6b8e46fff,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.49
+      value: -1.455
       objectReference: {fileID: 0}
     - target: {fileID: 8701064540307719392, guid: dcef88cfaa6327e40b2765f6b8e46fff,
         type: 3}
@@ -10451,12 +10463,12 @@ PrefabInstance:
     - target: {fileID: 1097520456647965360, guid: 6e3eea57ed3c5ad48946149ed0e95ed1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.811
+      value: -1.787
       objectReference: {fileID: 0}
     - target: {fileID: 1097520456647965360, guid: 6e3eea57ed3c5ad48946149ed0e95ed1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.329
+      value: -1.455
       objectReference: {fileID: 0}
     - target: {fileID: 1097520456647965360, guid: 6e3eea57ed3c5ad48946149ed0e95ed1,
         type: 3}
@@ -10508,6 +10520,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: bird-green
       objectReference: {fileID: 0}
+    - target: {fileID: 1097520456647965374, guid: 6e3eea57ed3c5ad48946149ed0e95ed1,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1097520456647965375, guid: 6e3eea57ed3c5ad48946149ed0e95ed1,
         type: 3}
       propertyPath: m_ConnectedRigidBody
@@ -10543,6 +10560,12 @@ PrefabInstance:
       propertyPath: fly
       value: 
       objectReference: {fileID: 8300000, guid: 65774e057815a5e4fa70215e9acad616, type: 3}
+    - target: {fileID: 7085359458010830416, guid: 6e3eea57ed3c5ad48946149ed0e95ed1,
+        type: 3}
+      propertyPath: Boom
+      value: 
+      objectReference: {fileID: 1821928179465711185, guid: d76e549b72211ee4698c03fa7eb12f06,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e3eea57ed3c5ad48946149ed0e95ed1, type: 3}
 --- !u!1001 &6418807271256500449
@@ -10565,12 +10588,12 @@ PrefabInstance:
     - target: {fileID: 6418807270806826134, guid: 8aa698e6c81e7274096cb5ca63f3e99b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.07
+      value: -3.862
       objectReference: {fileID: 0}
     - target: {fileID: 6418807270806826134, guid: 8aa698e6c81e7274096cb5ca63f3e99b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.45
+      value: -1.5668519
       objectReference: {fileID: 0}
     - target: {fileID: 6418807270806826134, guid: 8aa698e6c81e7274096cb5ca63f3e99b,
         type: 3}
@@ -10617,6 +10640,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6418807270806826136, guid: 8aa698e6c81e7274096cb5ca63f3e99b,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6418807270806826137, guid: 8aa698e6c81e7274096cb5ca63f3e99b,
         type: 3}
       propertyPath: m_ConnectedRigidBody
@@ -10642,6 +10670,12 @@ PrefabInstance:
       propertyPath: right
       value: 
       objectReference: {fileID: 1156986794}
+    - target: {fileID: 6418807270806826138, guid: 8aa698e6c81e7274096cb5ca63f3e99b,
+        type: 3}
+      propertyPath: Boom
+      value: 
+      objectReference: {fileID: 1821928179465711185, guid: d76e549b72211ee4698c03fa7eb12f06,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8aa698e6c81e7274096cb5ca63f3e99b, type: 3}
 --- !u!1001 &8015987747863596272
