@@ -17,6 +17,7 @@ public class BlackBird : Bird
 
     private void Clear()
     {
+        Rb.velocity = Vector3.zero;
         Instantiate(Boom, transform.position, Quaternion.identity);
         Sr.enabled = false;
         GetComponent<CircleCollider2D>().enabled = false;

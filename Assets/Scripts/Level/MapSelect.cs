@@ -4,7 +4,9 @@ using UnityEngine.UI;
 
 public class MapSelect : MonoBehaviour
 {
-    private int _starNum;
+    public GameObject panel;
+    public int maxAllSmallLevelStarNum;
+    private int _inStarLimit;
     private GameObject _stars;
     private GameObject _locks;
     private GameObject _star;
@@ -32,16 +34,38 @@ public class MapSelect : MonoBehaviour
             }
         }
 
-        _starNum = Convert.ToInt32(_starCount.GetComponent<Text>().text);
+        _inStarLimit = Convert.ToInt32(_starCount.GetComponent<Text>().text);
 
-        if (PlayerPrefs.GetInt("totalNum", 0) >= _starNum)
+        var totalStarNum = MemoryManager.GetTotalStarNum();
+
+        if (totalStarNum >= _inStarLimit)
         {
             _locks.SetActive(false);
-            _stars.SetActive(true);
+            _star.SetActive(false);
+            _starCount.SetActive(false);
+
+            _stars.GetComponentInChildren<Text>().text =
+                MemoryManager.GetBigAllStarNum(gameObject.name) + "/" + maxAllSmallLevelStarNum;
         }
+        else
+        {
+            _stars.SetActive(false);
+        }
+
+
+        GetComponent<Button>().onClick.AddListener(Select);
     }
 
-    void Update()
+    private void Select()
     {
+        MemoryManager.SetNowBigLevel(gameObject.name);
+        transform.parent.gameObject.SetActive(false);
+        panel.SetActive(true);
+    }
+
+    public void ReturnToSelect()
+    {
+        transform.parent.gameObject.SetActive(true);
+        panel.SetActive(false);
     }
 }

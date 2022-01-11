@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
 
     private int _calculateResult;
 
+    private int _starNum;
+
+
     private void Awake()
     {
         _birds = new List<Bird>();
@@ -110,14 +113,16 @@ public class GameManager : MonoBehaviour
     private IEnumerator Show()
     {
         var starNum = 4 - _birdIndex;
-        starNum = Math.Max(starNum, 3);
-        starNum = Math.Min(starNum, 0);
+        starNum = Math.Max(starNum, 0);
+        starNum = Math.Min(starNum, 3);
 
-        for (var i = 0; i < starNum; i++)
+        for (; _starNum < starNum; _starNum++)
         {
             yield return new WaitForSeconds(0.2F);
-            stars[i].SetActive(true);
+            stars[_starNum].SetActive(true);
         }
+
+        MemoryManager.RefreshSmallStarNum(_starNum);
     }
 
     public void Replay()
