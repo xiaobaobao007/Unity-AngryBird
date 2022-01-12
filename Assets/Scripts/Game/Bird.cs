@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Bird : MonoBehaviour, IComparable<Bird>
@@ -10,20 +12,25 @@ public class Bird : MonoBehaviour, IComparable<Bird>
     public AudioClip fly;
     public Sprite hurt;
     public GameObject Boom;
+    public GameObject Road;
 
     protected Rigidbody2D Rb;
     protected SpriteRenderer Sr;
     protected TestMyTrail MyTrail;
 
+    private readonly Vector2 _springJointPoint = new Vector2(0.09F, 0.7F);
     private Transform _leftPoint;
     private LineRenderer _left;
     private Transform _rightPoint;
+    private Rigidbody2D _rightRg;
     private LineRenderer _right;
     private SpringJoint2D _sp;
     private int _status;
-    private bool _canMove = true;
+    private bool _canMove = false;
     private bool _isClick;
     private bool _isFly;
+    private bool _paintRoad;
+    private bool _isRelease;
 
     private void Awake()
     {
@@ -32,10 +39,12 @@ public class Bird : MonoBehaviour, IComparable<Bird>
         _left = l.GetComponent<LineRenderer>();
 
         var r = GameObject.Find("rightPosition");
-        _rightPoint = r.transform;
         _right = r.GetComponent<LineRenderer>();
+        _rightRg = GameObject.Find("right").GetComponent<Rigidbody2D>();
+        _rightPoint = r.transform;
 
         _sp = GetComponent<SpringJoint2D>();
+        _sp.connectedAnchor = _springJointPoint;
 
         Rb = GetComponent<Rigidbody2D>();
         MyTrail = GetComponent<TestMyTrail>();
@@ -87,26 +96,69 @@ public class Bird : MonoBehaviour, IComparable<Bird>
 
     private void OnMouseDown()
     {
-        AudioPlay(select);
         if (!_canMove) return;
+        AudioPlay(select);
         //点击开始
         _isClick = true;
 
         Rb.isKinematic = true;
+
+        StartCoroutine(nameof(PaintRoad_1));
     }
+
+    private IEnumerator PaintRoad_1()
+    {
+        _paintRoad = true;
+        while (_paintRoad)
+        {
+            var clone = Instantiate(Road, transform.position, Quaternion.identity);
+
+            var roadSj = clone.GetComponent<SpringJoint2D>();
+            roadSj.connectedBody = _rightRg;
+            roadSj.connectedAnchor = _springJointPoint;
+
+            yield return new WaitForSeconds(delayTime);
+            roadSj.enabled = false;
+            Destroy(clone, 1.0F);
+        }
+    }
+
+    // private IEnumerator PaintRoad_2()
+    // {
+    //     var position = transform.position;
+    //     var now = new Vector3(position.x, position.y, position.z);
+    //
+    //     while (true)
+    //     {
+    //         var clone = Instantiate(Road, now, Quaternion.identity);
+    //
+    //         var roadSj = clone.GetComponent<SpringJoint2D>();
+    //         roadSj.connectedBody = _rightRg;
+    //         roadSj.connectedAnchor = _springJointPoint;
+    //
+    //         yield return new WaitForSeconds(delayTime);
+    //         roadSj.enabled = false;
+    //     }
+    // }
 
     private void OnMouseUp()
     {
+        if (!_canMove) return;
+        // StartCoroutine(nameof(PaintRoad_2));
+
+        _paintRoad = false;
+
         _canMove = false;
         //点击结束
         _isClick = false;
         Rb.isKinematic = false;
         //延迟执行
-        Invoke("Fly", delayTime);
+        Invoke(nameof(Fly), delayTime);
     }
 
     private void Fly()
     {
+        _isRelease = true;
         _isFly = true;
         AudioPlay(fly);
         //脱离靶子
@@ -139,6 +191,7 @@ public class Bird : MonoBehaviour, IComparable<Bird>
 
     public void setBirdIsWaitToFly_1()
     {
+        _canMove = true;
         enabled = true;
         _sp.enabled = true;
         Rb.bodyType = RigidbodyType2D.Dynamic;

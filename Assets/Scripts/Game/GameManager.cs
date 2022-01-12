@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
 
         _originPos = _birds[0].transform.position;
 
+        _birds[0].setBirdIsWaitToFly_1();
+
         for (var i = 1; i < _birds.Count; i++)
         {
             _birds[i].setBirdIsWaitToFly_0();
