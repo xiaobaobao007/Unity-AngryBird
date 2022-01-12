@@ -189,9 +189,13 @@ public class Bird : MonoBehaviour, IComparable<Bird>
         Rb.bodyType = RigidbodyType2D.Static;
     }
 
-    public void setBirdIsWaitToFly_1()
+    public void SetCanMove()
     {
         _canMove = true;
+    }
+
+    public void setBirdIsWaitToFly_1()
+    {
         enabled = true;
         _sp.enabled = true;
         Rb.bodyType = RigidbodyType2D.Dynamic;
